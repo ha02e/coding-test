@@ -1,15 +1,23 @@
+import java.util.Arrays;
 class Solution {
     public int solution(int[] array, int n) {
-        int answer = 100_000;
-        for(int num : array){
-            int diff = num - n;
-            if(Math.abs(diff) < Math.abs(answer)){
-                answer = diff;
-            }else if(Math.abs(diff) == Math.abs(answer) && diff < answer){
-                answer = diff;
+        int answer = 0;
+        Arrays.sort(array);
+
+        for(int i = 0; i < array.length; i++) {
+            if(n < array[i]) {
+                if(i == 0) {
+                    return array[i];
+                }
+                else if(n-array[i-1] == array[i]-n){
+                    return array[i-1];
+                }
+                else {
+                    return n-array[i-1] > array[i]-n ? array[i] : array[i-1];
+                }
+
             }
         }
-        answer = n + answer;
-        return answer;
+        return array[array.length-1];
     }
 }
