@@ -5,7 +5,7 @@ class Solution {
         String back = phone_number.substring(phone_number.length()-4,phone_number.length());
         
         //front 부분을 *으로 치환한다.
-        front=front.replaceAll("\\d","*");
+        front=front.replaceAll("[0-9]","*");
         
         String answer = front+back;
         return answer;
